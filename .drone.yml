@@ -11,6 +11,7 @@ pipeline:
     restart: always
     ports:
      - 8888:80
+    privileged: true
     volumes:
      - ./logs:/app/logs
     environment:
