@@ -1,0 +1,31 @@
+pipeline:
+  install:
+    image: maven:3.5.2-jdk-8-alpine
+    commands:
+    - mvn install
+    privileged: true
+    volumes:
+    - /app/maven/m2/repository:/root/.m2/repository
+  services:
+    image: nginx:1.13.7-alpine
+    restart: always
+    ports:
+     - 8888:80
+    volumes:
+     - ./logs:/app/logs
+    environment:
+     - "TZ=Asia/Shanghai"
+     - "CATALINA_OPTS=-Xms256m -Xmx512m"
+#  build:
+#    image: docker
+#    commands:
+#    - cd other/crazy
+#    - docker build -t crazy:1.0 .
+#    #- cd baigu-admin/baigu-admin-rpc-service
+#    #- docker build -t baigu-admin-rpc-service:1.0 .
+#    #- cd ../../baigu-api/baigu-api-rpc-service
+#    #- docker build -t baigu-api-rpc-service:1.0 .
+#    privileged: true
+#    volumes:
+#    - /var/run/docker.sock:/var/run/docker.sock
+branches: master
