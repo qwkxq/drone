@@ -1,0 +1,17 @@
+pipeline:
+  install:
+    image: maven:3.5.2-jdk-8-alpine
+    commands:
+    - mvn install
+    privileged: true
+    volumes:
+    - /app/maven/m2/repository:/root/.m2/repository
+
+  build:
+    image: docker
+    commands:
+    - docker run -p 8080:80 --name mynginx  -d nginx:1.13.7-alpine
+    privileged: true
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+branches: master
