@@ -8,7 +8,7 @@ pipeline:
     - /app/maven/m2/repository:/root/.m2/repository
   services:
     ngx:
-      image: nginx:1.13.7-alpine
+      image: nginx
       restart: always
       ports:
        - 8888:80
