@@ -14,7 +14,8 @@ services:
 #    Drone 默认是关闭注册的。这个例子开放了指定 GitHub 组织的成员的开放注册：
       - DRONE_OPEN=true
      # - DRONE_ORGS=dolores,dogpatch
-      - DRONE_ADMIN=root
+      # 管理员账号，多个用逗号分隔，某些项目配置只有管理员账号可以设置(比如设置“Project Settings”为“Trusted”)
+      - DRONE_ADMIN=qwkxq
       - DRONE_HOST=http://pengqi.51vip.biz
       - DRONE_SECRET=qwkxq_cqmygysdss
       - DRONE_GITHUB=true
