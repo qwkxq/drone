@@ -12,8 +12,6 @@ pipeline:
     ports:
      - 8888:80
     privileged: true
-    volumes:
-     - ./logs:/app/logs
     environment:
      - "TZ=Asia/Shanghai"
      - "CATALINA_OPTS=-Xms256m -Xmx512m"
