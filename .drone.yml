@@ -6,16 +6,16 @@ pipeline:
     privileged: true
     volumes:
     - /app/maven/m2/repository:/root/.m2/repository
-  services:
-    ngx:
-      image: nginx
-      restart: always
-      ports:
-       - 8888:80
-      privileged: true
-      environment:
-       - "TZ=Asia/Shanghai"
-       - "CATALINA_OPTS=-Xms256m -Xmx512m"
+services:
+  ngx:
+    image: nginx
+    restart: always
+    ports:
+     - 8888:80
+    privileged: true
+    environment:
+     - "TZ=Asia/Shanghai"
+     - "CATALINA_OPTS=-Xms256m -Xmx512m"
 
 #  build:
 #    image: docker
