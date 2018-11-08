@@ -1,0 +1,21 @@
+pipeline:
+  install:
+    image: maven:3.5.2-jdk-8-alpine
+    commands:
+    - mvn install
+    privileged: true
+    volumes:
+    - /app/maven/m2/repository:/root/.m2/repository
+
+  build:
+    image: docker
+    commands:
+    - docker run -p 8080:80 --name mynginx  -d nginx:1.13.7-alpine
+    privileged: true
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+branches: [github]
+
+# privileged=true 表示以特权模式运行容器(docker run --privileged)
+# 这使得docker将允许访问主机上的所有设备，并在AppArmor或SELinux中设置一些配置，以允许容器与运行在主机上的外部容器的进程几乎相同地访问主机
+# 参考地址：https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities
