@@ -14,7 +14,7 @@ pipeline:
     privileged: true
     volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-branches: [github]
+branches: [github-test]
 
 # privileged=true 表示以特权模式运行容器(docker run --privileged)
 # 这使得docker将允许访问主机上的所有设备，并在AppArmor或SELinux中设置一些配置，以允许容器与运行在主机上的外部容器的进程几乎相同地访问主机
